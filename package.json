@@ -1,0 +1,111 @@
+{
+  "_from": "cordova-electron@nightly",
+  "_id": "cordova-electron@2.0.0-nightly.2020.2.12.4eca203f",
+  "_inBundle": false,
+  "_integrity": "sha512-srtv3/+ZqKwYgRegVmGLQ8w4hNfJnUiL8D8oJRUj5TM8evabZkx/a7nHWeuzyhBX2Y2SNWm64OzCHMJQ7vX2/A==",
+  "_location": "/cordova-electron",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cordova-electron@nightly",
+    "name": "cordova-electron",
+    "escapedName": "cordova-electron",
+    "rawSpec": "nightly",
+    "saveSpec": null,
+    "fetchSpec": "nightly"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-electron/-/cordova-electron-2.0.0-nightly.2020.2.12.4eca203f.tgz",
+  "_shasum": "5de5f139dff52fb29d9a9cc9326db93a7dfa4239",
+  "_spec": "cordova-electron@nightly",
+  "_where": "/Users/buu700/cordova-electron",
+  "author": {
+    "name": "Apache Software Foundation"
+  },
+  "bin": {
+    "cordova-electron": "bin/create"
+  },
+  "bugs": {
+    "url": "https://github.com/apache/cordova-electron/issues"
+  },
+  "bundleDependencies": false,
+  "contributors": [
+    {
+      "name": "Steve Gill",
+      "email": "steveng@adobe.com"
+    },
+    {
+      "name": "Jesse MacFadyen",
+      "email": "purplecabbage@apache.org"
+    }
+  ],
+  "dependencies": {
+    "cordova-common": "4.0.0-nightly.2020.2.12.b779a345",
+    "electron": "^7.1.2",
+    "electron-builder": "^21.2.0",
+    "execa": "^3.3.0",
+    "fs-extra": "^8.0.1",
+    "nopt": "^4.0.1"
+  },
+  "deprecated": false,
+  "description": "electron apps as a target for cordova developers",
+  "devDependencies": {
+    "@cordova/eslint-config": "^2.0.0",
+    "jasmine": "^3.5.0",
+    "nyc": "^15.0.0-beta.0",
+    "rewire": "^4.0.1"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "homepage": "https://github.com/apache/cordova-electron#readme",
+  "kewords": [
+    "apache",
+    "cordova",
+    "cordova:platform",
+    "ecosystem:cordova",
+    "electron"
+  ],
+  "license": "Apache-2.0",
+  "main": "bin/templates/cordova/Api.js",
+  "name": "cordova-electron",
+  "nyc": {
+    "all": true,
+    "check-coverage": true,
+    "per-file": true,
+    "lines": 100,
+    "statements": 100,
+    "functions": 100,
+    "branches": 100,
+    "exclude": [
+      ".npm-scripts/",
+      "bin/templates/build-res/",
+      "bin/templates/platform_www/",
+      "bin/templates/www/",
+      "cordova-js-src/",
+      "cordova-lib/",
+      "coverage/",
+      "tests/"
+    ],
+    "reporter": [
+      "lcov",
+      "text"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apache/cordova-electron.git"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "prepack": "node .npm-scripts/prepack.js",
+    "test": "npm run lint && npm run test:coverage",
+    "test:coverage": "nyc npm run test:unit",
+    "test:unit": "jasmine --config=tests/spec/unit.json"
+  },
+  "version": "2.0.0-nightly.2020.2.12.4eca203f"
+}
