@@ -45,7 +45,7 @@
   ],
   "dependencies": {
     "cordova-common": "4.0.0-nightly.2020.2.12.b779a345",
-    "electron": "^7.1.2",
+    "electron": "^6",
     "electron-builder": "^21.2.0",
     "execa": "^3.3.0",
     "fs-extra": "^8.0.1",
