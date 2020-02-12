@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 /*
     Licensed to the Apache Software Foundation (ASF) under one
     or more contributor license agreements.  See the NOTICE file
@@ -19,16 +17,26 @@
     under the License.
 */
 
-let VERSION = 'version undefined';
+const rewire = require('rewire');
+const update = rewire('../../../../bin/lib/update');
 
-try {
-    const platformPkgPath = require.resolve('cordova-electron/package.json');
-    const platformPkg = require(platformPkgPath) || null;
-    VERSION = platformPkg.version || VERSION;
-} catch (e) {
-    // Do nothing.
-}
+describe('Update', () => {
+    describe('run export method', () => {
+        it('should reject with an errror that update is not supported.', () => {
+            update.run().then(
+                () => {},
+                error => {
+                    expect(error).toEqual(new Error('Update not supported'));
+                }
+            );
+        });
+    });
 
-module.exports.version = VERSION;
-
-if (!module.parent) console.log(VERSION);
+    describe('help export method', () => {
+        it('should warn that updating is not support for Electron.', () => {
+            spyOn(console, 'log');
+            update.help();
+            expect(console.log).toHaveBeenCalledWith('WARNING : Electron does not support updating. Remove and then re-Add the platform to get the latest.');
+        });
+    });
+});

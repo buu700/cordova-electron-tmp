@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 /*
     Licensed to the Apache Software Foundation (ASF) under one
     or more contributor license agreements.  See the NOTICE file
@@ -19,16 +17,22 @@
     under the License.
 */
 
-let VERSION = 'version undefined';
+const util = require('../../../../../../bin/templates/cordova/lib/util');
 
-try {
-    const platformPkgPath = require.resolve('cordova-electron/package.json');
-    const platformPkg = require(platformPkgPath) || null;
-    VERSION = platformPkg.version || VERSION;
-} catch (e) {
-    // Do nothing.
-}
+describe('Testing util.js:', () => {
+    describe('deepMerge method', () => {
+        it('should deep merge objects and arrays.', () => {
+            const mergeTo = { foo: 'bar', abc: [1, 2, 3] };
+            const mergeWith = { food: 'candy', abc: [5] };
 
-module.exports.version = VERSION;
+            const actual = util.deepMerge(mergeTo, mergeWith);
+            const expected = {
+                foo: 'bar',
+                food: 'candy',
+                abc: [1, 2, 3, 5]
+            };
 
-if (!module.parent) console.log(VERSION);
+            expect(actual).toEqual(expected);
+        });
+    });
+});

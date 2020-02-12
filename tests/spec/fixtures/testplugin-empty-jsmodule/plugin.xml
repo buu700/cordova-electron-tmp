@@ -1,6 +1,5 @@
-#!/usr/bin/env node
-
-/*
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
     Licensed to the Apache Software Foundation (ASF) under one
     or more contributor license agreements.  See the NOTICE file
     distributed with this work for additional information
@@ -9,7 +8,7 @@
     "License"); you may not use this file except in compliance
     with the License.  You may obtain a copy of the License at
 
-        http://www.apache.org/licenses/LICENSE-2.0
+    http://www.apache.org/licenses/LICENSE-2.0
 
     Unless required by applicable law or agreed to in writing,
     software distributed under the License is distributed on an
@@ -17,18 +16,17 @@
     KIND, either express or implied.  See the License for the
     specific language governing permissions and limitations
     under the License.
-*/
+-->
 
-let VERSION = 'version undefined';
+<plugin xmlns="http://cordova.apache.org/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="org.apache.testplugin2"
+    version="1.0.0">
 
-try {
-    const platformPkgPath = require.resolve('cordova-electron/package.json');
-    const platformPkg = require(platformPkgPath) || null;
-    VERSION = platformPkg.version || VERSION;
-} catch (e) {
-    // Do nothing.
-}
+    <name>Test Electron Plugin</name>
 
-module.exports.version = VERSION;
-
-if (!module.parent) console.log(VERSION);
+    <platform name="electron">
+      <js-module src="www/MyTestPlugin2.js">
+      </js-module>
+    </platform>
+</plugin>
