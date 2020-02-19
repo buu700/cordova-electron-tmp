@@ -23,6 +23,7 @@
     "test:coverage": "nyc jasmine --config=tests/spec/coverage.json"
   },
   "dependencies": {
+    "app-builder-lib": "https://github.com/buu700/app-builder-lib-tmp",
     "cordova-common": "^3.2.0",
     "electron": "^6",
     "electron-builder": "^22.3.2",
