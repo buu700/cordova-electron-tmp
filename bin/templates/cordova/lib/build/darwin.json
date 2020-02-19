@@ -6,7 +6,7 @@
       "icon": "${APP_INSTALLER_ICON}",
       "target": [
         {
-          "target": ["dmg", "mas"],
+          "target": "dmg",
           "arch": [
             "x64"
           ]
