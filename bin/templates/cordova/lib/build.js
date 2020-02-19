@@ -348,6 +348,10 @@ class ElectronBuilder {
     }
 
     build () {
+        for (const dir of require('glob').sync(`${this.api.locations.build}/**/app.asar.unpacked`)) {
+            require('rimraf').sync(dir);
+        }
+
         return require('electron-builder').build(this.buildSettings);
     }
 }
