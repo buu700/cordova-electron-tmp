@@ -1,47 +1,37 @@
 {
   "name": "cordova-electron",
-  "version": "1.1.1",
+  "version": "2.0.0",
   "description": "electron apps as a target for cordova developers",
-  "main": "bin/templates/cordova/Api.js",
-  "bin": "bin/create",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/apache/cordova-electron"
-  },
-  "bugs": {
-    "url": "https://github.com/apache/cordova-electron/issues"
-  },
+  "main": "lib/Api.js",
+  "repository": "github:apache/cordova-electron",
+  "bugs": "https://github.com/apache/cordova-electron/issues",
   "kewords": [
+    "apache",
     "cordova",
-    "electron",
-    "apache"
+    "cordova:platform",
+    "ecosystem:cordova",
+    "electron"
   ],
   "scripts": {
-    "eslint": "eslint bin tests",
-    "test": "npm run eslint && npm run test:coverage",
-    "test:unit": "jasmine --config=tests/spec/unit.json",
-    "test:coverage": "nyc jasmine --config=tests/spec/coverage.json"
+    "lint": "eslint .",
+    "prepack": "node .npm-scripts/prepack.js",
+    "test": "npm run lint && npm run test:coverage",
+    "test:coverage": "nyc npm run test:unit",
+    "test:unit": "jasmine --config=tests/spec/unit.json"
   },
   "dependencies": {
-    "cordova-common": "^3.2.0",
-    "electron": "^9",
-    "electron-builder": "^22.3.2",
-    "fs-extra": "^8.0.1",
-    "nopt": "^4.0.1",
-    "shelljs": "^0.5.3"
+    "cordova-common": "^4.0.2",
+    "electron": "^10.1.2",
+    "electron-builder": "^22.8.1",
+    "electron-devtools-installer": "^3.1.1",
+    "execa": "^4.0.3",
+    "fs-extra": "^9.0.1"
   },
   "devDependencies": {
-    "eslint": "^5.16.0",
-    "eslint-config-semistandard": "^13.0.0",
-    "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-import": "^2.17.3",
-    "eslint-plugin-node": "^8.0.1",
-    "eslint-plugin-promise": "^4.1.1",
-    "eslint-plugin-standard": "^4.0.0",
-    "jasmine": "^3.4.0",
-    "nyc": "^14.1.1",
-    "rewire": "^4.0.1",
-    "tmp": "^0.0.33"
+    "@cordova/eslint-config": "^3.0.0",
+    "jasmine": "^3.6.1",
+    "nyc": "^15.1.0",
+    "rewire": "^5.0.0"
   },
   "author": "Apache Software Foundation",
   "contributors": [
@@ -56,14 +46,24 @@
   ],
   "license": "Apache-2.0",
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=10.0.0"
   },
   "nyc": {
-    "include": [
-      "bin/templates/cordova/**",
-      "bin/lib/**",
-      "bin/create",
-      "bin/update"
+    "all": true,
+    "check-coverage": true,
+    "per-file": true,
+    "lines": 100,
+    "statements": 100,
+    "functions": 100,
+    "branches": 100,
+    "exclude": [
+      ".npm-scripts/",
+      "bin/templates/build-res/",
+      "bin/templates/platform_www/",
+      "cordova-js-src/",
+      "cordova-lib/",
+      "coverage/",
+      "tests/"
     ],
     "reporter": [
       "lcov",
