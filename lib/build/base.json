@@ -12,10 +12,6 @@
 
     "electronDownload": {
       "version": "13.1.9"
-    },
-
-    "buildDependenciesFromSource": true,
-		"nodeGypRebuild": false,
-		"npmRebuild": false
+    }
   }
 }
